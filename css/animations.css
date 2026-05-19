@@ -1,0 +1,129 @@
+/* ============================================
+   InAmigos Foundation - Animations
+   ============================================ */
+
+/* ---- Fade In Up ---- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ---- Scroll Reveal classes ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ---- Hero animations ---- */
+.hero-content .hero-tag    { animation: fadeInUp 0.7s ease 0.2s both; }
+.hero-content .hero-title  { animation: fadeInUp 0.7s ease 0.4s both; }
+.hero-content .hero-desc   { animation: fadeInUp 0.7s ease 0.6s both; }
+.hero-content .hero-btns   { animation: fadeInUp 0.7s ease 0.8s both; }
+
+/* ---- Stats counter animation ---- */
+.stat-number {
+  transition: all 0.5s ease;
+}
+
+/* ---- Floating badge ---- */
+.about-badge {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ---- Pulse on CTA buttons ---- */
+.btn-primary:focus,
+.btn-green:focus {
+  animation: pulse 0.4s ease;
+}
+
+/* ---- Navbar scroll shrink ---- */
+.navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+.navbar.scrolled .nav-inner {
+  height: 60px;
+  transition: height 0.3s ease;
+}
+
+/* ---- Mobile menu slide ---- */
+.nav-links.open {
+  animation: fadeInUp 0.3s ease both;
+}
+
+/* ---- Hover lift for cards ---- */
+.project-card,
+.event-card,
+.impact-card {
+  will-change: transform;
+}
+
+/* ---- Gradient text shimmer for hero ---- */
+.hero-title .highlight {
+  background: linear-gradient(90deg, #f4a261, #e76f1f, #f4a261);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
