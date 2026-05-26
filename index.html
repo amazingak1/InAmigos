@@ -12,6 +12,13 @@
 </head>
 <body>
 
+<!-- ===== PAGE LOADER ===== -->
+<div class="page-loader">
+  <img src="https://inamigosfoundation.org.in/public/storage/settings/1744214680.jpg" alt="Loading" class="loader-logo" />
+  <div class="loader-spinner"></div>
+  <div class="loader-text">Loading...</div>
+</div>
+
 <!-- ===== TOPBAR ===== -->
 <div class="topbar">
   <div class="container">
@@ -37,10 +44,9 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="about.html">About Us</a></li>
         <li><a href="#projects">Our Projects</a></li>
-        <li><a href="#impact">Impact</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="https://rzp.io/l/kWQ87HP" class="nav-donate" target="_blank">❤ Donate</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
@@ -61,6 +67,7 @@
     </div>
   </div>
   <div class="hero-overlay"></div>
+  <canvas id="particles-canvas"></canvas>
   <div class="container">
     <div class="hero-content">
       <div class="hero-tag">InAmigos Foundation – Est. 2020</div>
@@ -371,10 +378,32 @@
   </div>
 </section>
 
+<!-- ===== CERTIFICATIONS MARQUEE ===== -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <div class="marquee-item"><span>🏛️</span> Section 8 Registered</div>
+    <div class="marquee-item"><span>✅</span> 80G Certified</div>
+    <div class="marquee-item"><span>✅</span> 12A Certified</div>
+    <div class="marquee-item"><span>🏢</span> CSR-1 Registered</div>
+    <div class="marquee-item"><span>🇮🇳</span> NITI Aayog Registered</div>
+    <div class="marquee-item"><span>🏅</span> IAF ISO 9001:2015</div>
+    <div class="marquee-item"><span>🌍</span> 28 States Across India</div>
+    <div class="marquee-item"><span>👥</span> 200+ Volunteers</div>
+    <div class="marquee-item"><span>❤️</span> 50,000+ Beneficiaries</div>
+    <div class="marquee-item"><span>🎓</span> 30,000+ Interns Trained</div>
+    <div class="marquee-item"><span>🌿</span> 20,000+ Saplings Planted</div>
+  </div>
+</div>
+
 <!-- ===== CTA ===== -->
 <section class="cta-section">
   <div class="container">
     <div class="cta-inner reveal">
+      <div class="floating-shapes">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+      </div>
       <h2 class="cta-title">Join Us in Making a Difference</h2>
       <p class="cta-desc">Together, we can create a more inclusive, compassionate, and empowered society. Every contribution — big or small — creates lasting change.</p>
       <div class="cta-btns">
@@ -406,11 +435,10 @@
       <div>
         <h4 class="footer-col-title">Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="#about">About Us</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="#projects">Our Projects</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="https://inamigosfoundation.org.in/blog" target="_blank">Blog</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
         </ul>
       </div>
       <div>
@@ -419,8 +447,7 @@
           <li><a href="https://rzp.io/l/kWQ87HP" target="_blank">Donate</a></li>
           <li><a href="https://forms.gle/AB4c1hLaDDmtrKGU7" target="_blank">Volunteer</a></li>
           <li><a href="https://inamigosfoundation.org.in/became-volunteer" target="_blank">Join Us</a></li>
-          <li><a href="https://inamigosfoundation.org.in/volunteers" target="_blank">Our Volunteers</a></li>
-          <li><a href="https://inamigosfoundation.org.in/contact" target="_blank">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -447,61 +474,7 @@
 </footer>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script>
-  // --- Hamburger menu ---
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-  // --- Navbar scroll effect ---
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // --- Hero slideshow ---
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots   = document.querySelectorAll('.hero-dot');
-  let current  = 0;
-  function goToSlide(n) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = n;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-  dots.forEach(dot => dot.addEventListener('click', () => goToSlide(+dot.dataset.slide)));
-  setInterval(() => goToSlide((current + 1) % slides.length), 5000);
-
-  // --- Scroll reveal ---
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-
-  // --- Counter animation ---
-  function animateCounter(el) {
-    const target = +el.dataset.target;
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let count = 0;
-    const timer = setInterval(() => {
-      count = Math.min(count + step, target);
-      el.textContent = target >= 1000
-        ? Math.floor(count).toLocaleString('en-IN') + '+'
-        : Math.floor(count) + (target === 6 ? '' : '+');
-      if (count >= target) clearInterval(timer);
-    }, 16);
-  }
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCounter(e.target);
-        counterObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.stat-number').forEach(el => counterObserver.observe(el));
-</script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
