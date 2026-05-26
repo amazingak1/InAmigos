@@ -869,30 +869,13 @@
   </div>
 </footer>
 
+<!-- ===== JAVASCRIPT ===== -->
 <script>
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-  // Navbar scroll
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
   // FAQ Toggle
   function toggleFaq(btn) {
     const item = btn.parentElement;
     const isActive = item.classList.contains('active');
-    // Close all
     document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-    // Open clicked (if it was closed)
     if (!isActive) item.classList.add('active');
   }
 
@@ -903,10 +886,11 @@
     const success = document.getElementById('formSuccess');
     form.style.display = 'none';
     success.classList.add('show');
-    // Scroll to success message
     success.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 </script>
+<script src="js/main.js"></script>
+<script src="js/more.js"></script>
 
 </body>
 </html>

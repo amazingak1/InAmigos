@@ -657,45 +657,9 @@
   </div>
 </footer>
 
-<script>
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-  // Navbar scroll
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Counter animation
-  function animateCounter(el) {
-    const target = +el.dataset.target;
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let count = 0;
-    const timer = setInterval(() => {
-      count = Math.min(count + step, target);
-      el.textContent = Math.floor(count).toLocaleString('en-IN') + '+';
-      if (count >= target) clearInterval(timer);
-    }, 16);
-  }
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCounter(e.target);
-        counterObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.impact-num-value').forEach(el => counterObserver.observe(el));
-</script>
+<!-- ===== JAVASCRIPT ===== -->
+<script src="js/main.js"></script>
+<script src="js/more.js"></script>
 
 </body>
 </html>
